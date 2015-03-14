@@ -26,7 +26,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-int matrixAvg(unsigned char matrix[3][3])
+int matrixAvg(int matrix[3][3])
 {
 	int matAvg;
 	matAvg = 0;
@@ -38,7 +38,6 @@ int matrixAvg(unsigned char matrix[3][3])
         matAvg = matAvg + matrix[m][n];
       }
 	}
-
 	matAvg = matAvg / 9;
 	return matAvg;
 }
@@ -46,50 +45,26 @@ int matrixAvg(unsigned char matrix[3][3])
 int main(int argc, char **argv)
 {
 	
-	unsigned char matrixA [3][3] = {
-		{255, 0, 64} ,
-		{3, 73, 121} ,
-		{12, 56, 211}
+	int matrixA [3][3] = {
+		{1, 0, 64} ,
+		{54, 65, 121} ,
+		{1, 6, 211}
 	};
 	int avgMatA;
 	avgMatA = 0;
-	int i,j;
 
-	/*
-	for ( i = 0; i < 3; i++ )
-	{
-      for ( j = 0; j < 3; j++ )
-      {
-        avgMatA = avgMatA + matrixA[i][j];
-      }
-	}
-
-	avgMatA = avgMatA / 9;
-	*/
 	avgMatA = matrixAvg(matrixA);
-	printf("%d\n", avgMatA);
+	printf("Average of Matrix A is: %d\n", avgMatA);
 	
 	int avgMatB;
 	avgMatB = 0;
-	unsigned char matrixB [3][3] = {
+	int matrixB [3][3] = {
 		{abs(matrixA[0][0] - avgMatA), abs(matrixA[1][0] - avgMatA), abs(matrixA[2][0] - avgMatA)} ,
-		{abs(matrixA[0][1] - avgMatA), abs(matrixA[1][1] - avgMatA), abs (matrixA[2][1] - avgMatA)} ,
-		{abs(matrixA[0][2] - avgMatA), abs(matrixA[1][2] - avgMatA), abs (matrixA[2][2] - avgMatA)}
+		{abs(matrixA[0][1] - avgMatA), abs(matrixA[1][1] - avgMatA), abs(matrixA[2][1] - avgMatA)} ,
+		{abs(matrixA[0][2] - avgMatA), abs(matrixA[1][2] - avgMatA), abs(matrixA[2][2] - avgMatA)}
 	};
-	/*
-	for ( i = 0; i < 3; i++ )
-	{
-      for ( j = 0; j < 3; j++ )
-      {
-         printf("matrixB[%d][%d] = %d\n", i,j, matrixB[i][j] );
-         avgMatB = avgMatB + matrixB[i][j];
-      }
-      printf("\n");
-	}
-	avgMatB = avgMatB / 9;
-	*/
+
 	avgMatB = matrixAvg(matrixB);
-	printf("%d\n", avgMatB);
+	printf("Average of Matrix B is: %d", avgMatB);
 	return 0;
 }
-
