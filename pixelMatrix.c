@@ -4,11 +4,5 @@ int pixMat(int xdim, int ydim)
 {
 	return xdim + ydim;
 }
-int xdim(int x)
-{
-	return x;
-}
-int ydim(int y)
-{
-	return y;
-}
+const int XDIM=5;
+const int YDIM=5;

@@ -4,7 +4,7 @@
 #define _PIXELMAT_H_
 
 int pixMat(int xdim, int ydim);
-int xdim(int x);
-int ydim(int y);
+const int XDIM;
+const int YDIM;
 
 #endif

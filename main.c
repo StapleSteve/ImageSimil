@@ -37,11 +37,12 @@ double avgDeviation(double avg);
 
 int main(int argc, char **argv)
 {
-	const size_t N = 5;
-	const size_t M = 5;
+	srand(time(NULL));
+	
+	const int N = YDIM;
+	const int M = XDIM;
 	int a,b;
 	
-	srand(time(NULL));
 	int matrixA [N][M];
 	for(a=0;a<N;a++)
 	{
