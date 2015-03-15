@@ -58,13 +58,15 @@ int main(int argc, char **argv)
 	avgMatA = matrixAvgFlt(matrixA);
 	printf("Average of Matrix A is: %0.3f\n\n", avgMatA);
 	
-	double matrixB[5][5] = {
-		{avgMatVal(matrixA[0][0], avgMatA), avgMatVal(matrixA[0][1], avgMatA), avgMatVal(matrixA[0][2], avgMatA), avgMatVal(matrixA[0][3], avgMatA), avgMatVal(matrixA[0][4], avgMatA)} ,
-		{avgMatVal(matrixA[1][0], avgMatA), avgMatVal(matrixA[1][1], avgMatA), avgMatVal(matrixA[1][2], avgMatA), avgMatVal(matrixA[1][3], avgMatA), avgMatVal(matrixA[1][4], avgMatA)} ,
-		{avgMatVal(matrixA[2][0], avgMatA), avgMatVal(matrixA[2][1], avgMatA), avgMatVal(matrixA[2][2], avgMatA), avgMatVal(matrixA[2][3], avgMatA), avgMatVal(matrixA[2][4], avgMatA)} ,
-		{avgMatVal(matrixA[3][0], avgMatA), avgMatVal(matrixA[3][1], avgMatA), avgMatVal(matrixA[3][2], avgMatA), avgMatVal(matrixA[3][3], avgMatA), avgMatVal(matrixA[3][4], avgMatA)} ,
-		{avgMatVal(matrixA[4][0], avgMatA), avgMatVal(matrixA[4][1], avgMatA), avgMatVal(matrixA[4][2], avgMatA), avgMatVal(matrixA[4][3], avgMatA), avgMatVal(matrixA[4][4], avgMatA)}
-	};
+	double matrixB [N][M];
+	for(a=0;a<N;a++)
+	{
+		for(b=0;b<M;b++)
+		{
+			matrixB[a][b] = avgMatVal(matrixA[a][b], avgMatA);
+		}
+	}
+	
 	
 	//print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	prntMatDbl(matrixB);
