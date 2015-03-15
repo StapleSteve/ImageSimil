@@ -25,7 +25,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include "pixelMatrix.h"
 
 void prntMatInt(int a[5][5]);
 void prntMatDbl(double a[5][5]);
@@ -37,6 +37,7 @@ double avgDeviation(double avg);
 
 int main(int argc, char **argv)
 {
+
 	srand(time(NULL));
 	int matrixA [5][5] = {
 		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
