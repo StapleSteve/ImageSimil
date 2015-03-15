@@ -37,17 +37,19 @@ double avgDeviation(double avg);
 
 int main(int argc, char **argv)
 {
-
-	srand(time(NULL));
-	int matrixA [5][5] = {
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-
-	};
+	const size_t N = 5;
+	const size_t M = 5;
+	int a,b;
 	
+	srand(time(NULL));
+	int matrixA [N][M];
+	for(a=0;a<N;a++)
+	{
+		for(b=0;b<M;b++)
+		{
+			matrixA[a][b] = rand() % 255;
+		}
+	}
 	//print matrixA using prntMatInt(int matrix[5][5])
 	prntMatInt(matrixA);
 	
