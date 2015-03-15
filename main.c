@@ -27,11 +27,11 @@
 #include <time.h>
 #include "pixelMatrix.h"
 
-void prntMatInt(int a[5][5]);
-void prntMatDbl(double a[5][5]);
+void prntMatInt(int a[YDIM][XDIM]);
+void prntMatDbl(double a[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
-double matrixAvgFlt(int matrix[5][5]);
-double matrixAvgFltIn(double matrix[5][5]);
+double matrixAvgFlt(int matrix[YDIM][XDIM]);
+double matrixAvgFltIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
 
 
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 			matrixA[a][b] = rand() % 255;
 		}
 	}
-	//print matrixA using prntMatInt(int matrix[5][5])
+	//print matrixA using prntMatInt(int matrix[YDIM][XDIM])
 	prntMatInt(matrixA);
 	
 	double avgMatA;
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 		{avgMatVal(matrixA[4][0], avgMatA), avgMatVal(matrixA[4][1], avgMatA), avgMatVal(matrixA[4][2], avgMatA), avgMatVal(matrixA[4][3], avgMatA), avgMatVal(matrixA[4][4], avgMatA)}
 	};
 	
-	//print matrixB using prntMatDbl(double matrix[5][5])
+	//print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	prntMatDbl(matrixB);
 	
 	double avgMatB;
@@ -77,22 +77,22 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-void prntMatInt(int a[5][5])
+void prntMatInt(int a[YDIM][XDIM])
 {
    int i, j;
-   for (i = 0; i < 5; i++) {
-      for (j = 0; j < 5; j++)
+   for (i = 0; i < YDIM; i++) {
+      for (j = 0; j < XDIM; j++)
          printf("%6i ", a[i][j]);
       printf("\n");
    }
    printf("\n");
 }
 
-void prntMatDbl(double a[5][5])
+void prntMatDbl(double a[YDIM][XDIM])
 {
    int i, j;
-   for (i = 0; i < 5; i++) {
-      for (j = 0; j < 5; j++)
+   for (i = 0; i < YDIM; i++) {
+      for (j = 0; j < XDIM; j++)
          printf("%6.2f  ", a[i][j]);
       printf("\n");
    }
@@ -105,14 +105,14 @@ double avgMatVal(int value, double avg)
 	return toRet;
 }
 
-double matrixAvgFlt(int matrix[5][5])
+double matrixAvgFlt(int matrix[YDIM][XDIM])
 {
 	double matAvg;
 	matAvg = 0.0;
 	int m,n;
-	for ( m = 0; m < 5; m++ )
+	for ( m = 0; m < YDIM; m++ )
 	{
-      for ( n = 0; n < 5; n++ )
+      for ( n = 0; n < XDIM; n++ )
       {
         matAvg = matAvg + matrix[m][n];
       }
@@ -121,14 +121,14 @@ double matrixAvgFlt(int matrix[5][5])
 	return matAvg;
 }
 
-double matrixAvgFltIn(double matrix[5][5])
+double matrixAvgFltIn(double matrix[YDIM][XDIM])
 {
 	double matAvg;
 	matAvg = 0.0;
 	int m,n;
-	for ( m = 0; m < 5; m++ )
+	for ( m = 0; m < YDIM; m++ )
 	{
-      for ( n = 0; n < 5; n++ )
+      for ( n = 0; n < XDIM; n++ )
       {
         matAvg = matAvg + matrix[m][n];
       }
