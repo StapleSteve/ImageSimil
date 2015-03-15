@@ -32,6 +32,7 @@ void prntMatDbl(double a[5][5]);
 double avgMatVal(int value, double avg);
 double matrixAvgFlt(int matrix[5][5]);
 double matrixAvgFltIn(double matrix[5][5]);
+double avgDeviation(double avg);
 
 
 int main(int argc, char **argv)
@@ -68,6 +69,7 @@ int main(int argc, char **argv)
 	avgMatB = matrixAvgFltIn(matrixB);
 	printf("Average of Matrix B is: %0.5f\n", avgMatB);
 	
+	printf("The average of Matrix B is %0.5f off of the overall average", avgDeviation(avgMatB));
 	return 0;
 }
 
@@ -130,3 +132,11 @@ double matrixAvgFltIn(double matrix[5][5])
 	matAvg = matAvg / 25.0;
 	return matAvg;
 }
+
+double avgDeviation(double avg)
+{
+	double stdAvg;
+	stdAvg = 60.0;
+	return fabs(stdAvg - avg);
+}
+	
