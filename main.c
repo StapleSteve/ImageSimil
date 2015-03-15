@@ -119,7 +119,7 @@ double matrixAvgFlt(int matrix[YDIM][XDIM])
         matAvg = matAvg + matrix[m][n];
       }
 	}
-	matAvg = matAvg / 25.0;
+	matAvg = matAvg / (XDIM * YDIM);
 	return matAvg;
 }
 
@@ -135,14 +135,14 @@ double matrixAvgFltIn(double matrix[YDIM][XDIM])
         matAvg = matAvg + matrix[m][n];
       }
 	}
-	matAvg = matAvg / 25.0;
+	matAvg = matAvg / (XDIM * YDIM);
 	return matAvg;
 }
 
 double avgDeviation(double avg)
 {
 	double stdAvg;
-	stdAvg = 60.0;
+	stdAvg = 60.0;  //this is preliminary, but all signs point to 60 beind the average average value of matrixB
 	return fabs(stdAvg - avg);
 }
 	
