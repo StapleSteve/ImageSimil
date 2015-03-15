@@ -27,7 +27,52 @@
 #include <time.h>
 
 
-void prntMatInt(int a[5][5]) {
+void prntMatInt(int a[5][5]);
+void prntMatDbl(double a[5][5]);
+double avgMatVal(int value, double avg);
+double matrixAvgFlt(int matrix[5][5]);
+double matrixAvgFltIn(double matrix[5][5]);
+
+
+int main(int argc, char **argv)
+{
+	srand(time(NULL));
+	int matrixA [5][5] = {
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+
+	};
+	
+	//print matrixA using prntMatInt(int matrix[5][5])
+	prntMatInt(matrixA);
+	
+	double avgMatA;
+	avgMatA = matrixAvgFlt(matrixA);
+	printf("Average of Matrix A is: %0.3f\n\n", avgMatA);
+	
+	double matrixB[5][5] = {
+		{avgMatVal(matrixA[0][0], avgMatA), avgMatVal(matrixA[1][0], avgMatA), avgMatVal(matrixA[2][0], avgMatA), avgMatVal(matrixA[3][0], avgMatA), avgMatVal(matrixA[4][0], avgMatA)} ,
+		{avgMatVal(matrixA[0][1], avgMatA), avgMatVal(matrixA[1][1], avgMatA), avgMatVal(matrixA[2][1], avgMatA), avgMatVal(matrixA[3][1], avgMatA), avgMatVal(matrixA[4][1], avgMatA)} ,
+		{avgMatVal(matrixA[0][2], avgMatA), avgMatVal(matrixA[1][2], avgMatA), avgMatVal(matrixA[2][2], avgMatA), avgMatVal(matrixA[3][2], avgMatA), avgMatVal(matrixA[4][2], avgMatA)} ,
+		{avgMatVal(matrixA[0][3], avgMatA), avgMatVal(matrixA[1][3], avgMatA), avgMatVal(matrixA[2][3], avgMatA), avgMatVal(matrixA[3][3], avgMatA), avgMatVal(matrixA[4][3], avgMatA)} ,
+		{avgMatVal(matrixA[0][4], avgMatA), avgMatVal(matrixA[1][4], avgMatA), avgMatVal(matrixA[2][4], avgMatA), avgMatVal(matrixA[3][4], avgMatA), avgMatVal(matrixA[4][4], avgMatA)}
+	};
+	
+	//print matrixB using prntMatDbl(double matrix[5][5])
+	prntMatDbl(matrixB);
+	
+	double avgMatB;
+	avgMatB = matrixAvgFltIn(matrixB);
+	printf("Average of Matrix B is: %0.5f\n", avgMatB);
+	
+	return 0;
+}
+
+void prntMatInt(int a[5][5])
+{
    int i, j;
    for (i = 0; i < 5; i++) {
       for (j = 0; j < 5; j++)
@@ -37,7 +82,8 @@ void prntMatInt(int a[5][5]) {
    printf("\n");
 }
 
-void prntMatDbl(double a[5][5]) {
+void prntMatDbl(double a[5][5])
+{
    int i, j;
    for (i = 0; i < 5; i++) {
       for (j = 0; j < 5; j++)
@@ -83,41 +129,4 @@ double matrixAvgFltIn(double matrix[5][5])
 	}
 	matAvg = matAvg / 25.0;
 	return matAvg;
-}
-
-int main(int argc, char **argv)
-{
-	srand(time(NULL));
-	int matrixA [5][5] = {
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
-
-	};
-	
-	//print matrixA using prntMatInt(int matrix[5][5])
-	prntMatInt(matrixA);
-	
-	double avgMatA;
-	avgMatA = matrixAvgFlt(matrixA);
-	printf("Average of Matrix A is: %0.3f\n\n", avgMatA);
-	
-	double matrixB[5][5] = {
-		{avgMatVal(matrixA[0][0], avgMatA), avgMatVal(matrixA[1][0], avgMatA), avgMatVal(matrixA[2][0], avgMatA), avgMatVal(matrixA[3][0], avgMatA), avgMatVal(matrixA[4][0], avgMatA)} ,
-		{avgMatVal(matrixA[0][1], avgMatA), avgMatVal(matrixA[1][1], avgMatA), avgMatVal(matrixA[2][1], avgMatA), avgMatVal(matrixA[3][1], avgMatA), avgMatVal(matrixA[4][1], avgMatA)} ,
-		{avgMatVal(matrixA[0][2], avgMatA), avgMatVal(matrixA[1][2], avgMatA), avgMatVal(matrixA[2][2], avgMatA), avgMatVal(matrixA[3][2], avgMatA), avgMatVal(matrixA[4][2], avgMatA)} ,
-		{avgMatVal(matrixA[0][3], avgMatA), avgMatVal(matrixA[1][3], avgMatA), avgMatVal(matrixA[2][3], avgMatA), avgMatVal(matrixA[3][3], avgMatA), avgMatVal(matrixA[4][3], avgMatA)} ,
-		{avgMatVal(matrixA[0][4], avgMatA), avgMatVal(matrixA[1][4], avgMatA), avgMatVal(matrixA[2][4], avgMatA), avgMatVal(matrixA[3][4], avgMatA), avgMatVal(matrixA[4][4], avgMatA)}
-	};
-	
-	//print matrixB using prntMatDbl(double matrix[5][5])
-	prntMatDbl(matrixB);
-	
-	double avgMatB;
-	avgMatB = matrixAvgFltIn(matrixB);
-	printf("Average of Matrix B is: %0.5f\n", avgMatB);
-	
-	return 0;
 }
