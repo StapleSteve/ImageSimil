@@ -21,10 +21,10 @@
  * 
  */
 
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 
 float avgMatVal(int value, float avg)
 {
@@ -66,24 +66,19 @@ float matrixAvgFltIn(float matrix[5][5])
 
 int main(int argc, char **argv)
 {
-	
+	srand(time(NULL));
 	int matrixA [5][5] = {
-		{1, 0, 5, 231, 125} ,
-		{90, 0, 234, 1, 25} ,
-		{1, 89, 0, 6, 52} ,
-		{105, 7, 4, 60, 35} ,
-		{1, 50, 246, 261, 55} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
+		{rand() % 255, rand() % 255, rand() % 255, rand() % 255, rand() % 255} ,
 
 	};
 	float avgMatA;
-	avgMatA = 0.0;
-
 	avgMatA = matrixAvgFlt(matrixA);
 	printf("Average of Matrix A is: %f\n", avgMatA);
 	
-	float avgMatB;
-	avgMatB = 0.0;
-
 	float matrixB[5][5] = {
 		{avgMatVal(matrixA[0][0], avgMatA), avgMatVal(matrixA[1][0], avgMatA), avgMatVal(matrixA[2][0], avgMatA), avgMatVal(matrixA[3][0], avgMatA), avgMatVal(matrixA[4][0], avgMatA)} ,
 		{avgMatVal(matrixA[0][1], avgMatA), avgMatVal(matrixA[1][1], avgMatA), avgMatVal(matrixA[2][1], avgMatA), avgMatVal(matrixA[3][1], avgMatA), avgMatVal(matrixA[4][1], avgMatA)} ,
@@ -91,7 +86,7 @@ int main(int argc, char **argv)
 		{avgMatVal(matrixA[0][3], avgMatA), avgMatVal(matrixA[1][3], avgMatA), avgMatVal(matrixA[2][3], avgMatA), avgMatVal(matrixA[3][3], avgMatA), avgMatVal(matrixA[4][3], avgMatA)} ,
 		{avgMatVal(matrixA[0][4], avgMatA), avgMatVal(matrixA[1][4], avgMatA), avgMatVal(matrixA[2][4], avgMatA), avgMatVal(matrixA[3][4], avgMatA), avgMatVal(matrixA[4][4], avgMatA)}
 	};
-
+	float avgMatB;
 	avgMatB = matrixAvgFltIn(matrixB);
 	printf("Average of Matrix B is: %f\n", avgMatB);
 	
