@@ -1,7 +1,7 @@
 #include "imageUtils.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "pixelMatrix.h"
 
 int width(int image)
 {

@@ -35,6 +35,8 @@ double avgMatVal(int value, double avg);
 double matrixAvgFlt(int matrix[YDIM][XDIM]);
 double matrixAvgFltIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
+int readImagePixel(int currentX, int currentY);
+int populatePixel(int currentX, int currentY);
 
 
 
@@ -51,7 +53,7 @@ int main(int argc, char **argv)
 	{
 		for(b=0;b<M;b++)
 		{
-			matrixA[a][b] = rand() % 255;
+			matrixA[a][b] = populatePixel(b,a);
 		}
 	}
 	//print matrixA using prntMatInt(int matrix[YDIM][XDIM])
@@ -149,4 +151,17 @@ double avgDeviation(double avg)
 	stdAvg = 63.75;  //
 	return fabs(stdAvg - avg);
 }
-	
+
+int readImagePixel(int currentX, int currentY)
+{
+	int j;
+	j = rand() % 255;
+	return j;
+}
+
+int populatePixel(int currentX, int currentY)
+{
+	int i;
+	i = readImagePixel(currentX, currentY);
+	return i;
+}
