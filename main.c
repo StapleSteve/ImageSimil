@@ -25,9 +25,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include "pixelMatrix.h"
 #include "imageUtils.h"
-
 
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
@@ -38,8 +36,6 @@ double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
 void doImageShit();
-
-
 
 int main(int argc, char **argv)
 {
@@ -73,7 +69,6 @@ int main(int argc, char **argv)
 			matrixB[a][b] = avgMatVal(matrixA[a][b], avgMatA);
 		}
 	}
-	
 	
 	//print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	prntMatDbl(matrixB);

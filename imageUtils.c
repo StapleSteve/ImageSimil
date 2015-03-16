@@ -1,10 +1,9 @@
 #include "imageUtils.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "pixelMatrix.h"
 
-
-
+const int XDIM = 512;
+const int YDIM = 512;
 
 int width(int image)
 {
