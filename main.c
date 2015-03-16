@@ -37,15 +37,17 @@ double matrixAvgFltIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
+void doImageShit();
 
 
 
 int main(int argc, char **argv)
 {
+	doImageShit();  //placeholder to use the shit from http://stackoverflow.com/questions/25052809/working-with-bitmap-in-c
 	srand(time(NULL));
 	
-	const int N = YDIM;
-	const int M = XDIM;
+	const int N = XDIM;
+	const int M = YDIM;
 	int a,b;
 	
 	int matrixA [N][M];
@@ -165,3 +167,14 @@ int populatePixel(int currentX, int currentY)
 	i = readImagePixel(currentX, currentY);
 	return i;
 }
+
+void doImageShit()
+{
+	FILEHEADER fh;
+    INFOHEADER ih;
+    FILE *img = fopen("Lenna.bmp", "rb");
+    fread(&fh, sizeof(unsigned char), sizeof(FILEHEADER), img);
+    fread(&ih, sizeof(unsigned char), sizeof(INFOHEADER), img);
+    printf("width: <%d>\nheight: <%d>\n", ih.width, ih.height);
+}
+

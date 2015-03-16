@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "pixelMatrix.h"
 
+
+
+
 int width(int image)
 {
 	return image;

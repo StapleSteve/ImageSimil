@@ -1,4 +1,6 @@
 #include "pixelMatrix.h"
+#include <stdio.h>
+#include "imageUtils.h"
 
 
 const int XDIM=10;
