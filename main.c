@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "pixelMatrix.h"
+#include "imageUtils.h"
+
 
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
@@ -33,6 +35,7 @@ double avgMatVal(int value, double avg);
 double matrixAvgFlt(int matrix[YDIM][XDIM]);
 double matrixAvgFltIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
+
 
 
 int main(int argc, char **argv)
@@ -75,7 +78,8 @@ int main(int argc, char **argv)
 	avgMatB = matrixAvgFltIn(matrixB);
 	printf("Average of Matrix B is: %0.5f\n", avgMatB);
 	
-	printf("The average of Matrix B is %0.5f off of the overall average", avgDeviation(avgMatB));
+	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB));
+	
 	return 0;
 }
 
@@ -142,7 +146,7 @@ double matrixAvgFltIn(double matrix[YDIM][XDIM])
 double avgDeviation(double avg)
 {
 	double stdAvg;
-	stdAvg = 60.0;  //this is preliminary, but all signs point to 60 beind the average average value of matrixB
+	stdAvg = 63.75;  //
 	return fabs(stdAvg - avg);
 }
 	

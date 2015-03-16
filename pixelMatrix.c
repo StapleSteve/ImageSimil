@@ -1,8 +1,8 @@
 #include "pixelMatrix.h"
 
-int pixMat(int xdim, int ydim)
-{
-	return xdim + ydim;
-}
-const int XDIM=5;
-const int YDIM=5;
+
+const int XDIM=10;
+const int YDIM=10;
+
+
+//Anything above 835x835 dumps the core, resulting in a segfault
