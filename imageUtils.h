@@ -30,11 +30,8 @@ typedef struct __attribute__((__packed__)) {
     unsigned char  r;
 } IMAGE;
 
-const int XDIM;
-const int YDIM;
-int width(int image);
-int height(int image);
-void printToCSV(int image);
-void renderFromCSV(int csv);
+const int XDIM = 10;
+const int YDIM = 10;
+
 
 #endif
