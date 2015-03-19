@@ -166,15 +166,11 @@ int populatePixel(int currentX, int currentY)
 
 void doImageShit()
 {
-	FILEHEADER fh;
-    INFOHEADER ih;
-    FILE *img = fopen("Lenna.bmp", "rb");
-    fread(&fh, sizeof(unsigned char), sizeof(FILEHEADER), img);
-    fread(&ih, sizeof(unsigned char), sizeof(INFOHEADER), img);
-    printf("width: <%d>\nheight: <%d>\n", ih.width, ih.height);
-    if(ih.width != XDIM ||  ih.height != YDIM)
-    {
-		printf("Shit went down yo\n");
-	}
+
+	unsigned char* test;
+	char* fileName = "Lenna.bmp";
+	test = ReadBMP(fileName);
+	printf("%c\n %c\n %c\n", test[(32*512)+32], test[(32*512)+33], test[(32*512)+34]);
+	
 }
 
