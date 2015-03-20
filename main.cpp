@@ -170,7 +170,7 @@ void doImageShit()
 	unsigned char* test;
 	char* fileName = "Lenna.bmp";
 	test = ReadBMP(fileName);
-	printf("%c\n %c\n %c\n", test[(32*512)+32], test[(32*512)+33], test[(32*512)+34]);
+	printf("R: %u :\nG: %u :\nB: %u :\n", test[(12*512)+12], test[(12*512)+13], test[(12*512)+14]);
 	
 }
 
