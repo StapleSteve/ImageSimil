@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 
-unsigned char* ReadBMP(char* filename)
+unsigned char* ReadBMP()
 {
-    FILE* f = fopen(filename, "rb");
+    FILE* f = fopen("Lenna.bmp", "rb");
 
     if(f == NULL)
         throw "Argument Exception";
@@ -37,4 +37,11 @@ unsigned char* ReadBMP(char* filename)
 
     fclose(f);
     return data;
+}
+
+int getPixel(unsigned char* image, int x, int y)
+{
+	int toRet;
+	toRet = image[(x*512)+y];
+	return toRet;
 }

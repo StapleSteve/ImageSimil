@@ -168,9 +168,8 @@ void doImageShit()
 {
 
 	unsigned char* test;
-	char* fileName = "Lenna.bmp";
-	test = ReadBMP(fileName);
-	printf("R: %u :\nG: %u :\nB: %u :\n", test[(12*512)+12], test[(12*512)+13], test[(12*512)+14]);
-	
+	test = ReadBMP();
+	//printf("R: %u :\nG: %u :\nB: %u :\n", test[(12*512)+12], test[(12*512)+13], test[(12*512)+14]);
+	printf("W00T %i \n", getPixel(test, 12, 12));
 }
 
