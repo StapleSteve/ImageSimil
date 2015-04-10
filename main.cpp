@@ -1,5 +1,5 @@
 /*
- * main.c
+ * main.cpp
  * 
  * Copyright 2015 Scotty Vance <svance@rogue>
  * 
@@ -25,7 +25,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include "imageUtils.h"
+#include "bmp.h"
+
 
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
@@ -35,11 +36,9 @@ double matrixAvgFltIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
-void doImageShit();
 
 int main(int argc, char **argv)
 {
-	doImageShit();  //placeholder to use the shit from http://stackoverflow.com/questions/25052809/working-with-bitmap-in-c
 	srand(time(NULL));
 	
 	const int N = XDIM;
@@ -163,13 +162,3 @@ int populatePixel(int currentX, int currentY)
 	i = readImagePixel(currentX, currentY);
 	return i;
 }
-
-void doImageShit()
-{
-
-	unsigned char* test;
-	test = ReadBMP();
-	//printf("R: %u :\nG: %u :\nB: %u :\n", test[(12*512)+12], test[(12*512)+13], test[(12*512)+14]);
-	printf("W00T %i \n", getPixel(test, 12, 12));
-}
-

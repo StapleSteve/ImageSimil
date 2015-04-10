@@ -5,6 +5,9 @@ typedef int LONG;
 typedef unsigned short WORD;
 typedef unsigned int DWORD;
 
+const int XDIM = 10;
+const int YDIM = 10;
+
 typedef struct tagBITMAPFILEHEADER {
   WORD  bfType;
   DWORD bfSize;
