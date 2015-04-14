@@ -31,8 +31,8 @@
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
-double matrixAvgFlt(int matrix[YDIM][XDIM]);
-double matrixAvgFltIn(double matrix[YDIM][XDIM]);
+double matrixAvgDbl(int matrix[YDIM][XDIM]);
+double matrixAvgDblIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
@@ -53,11 +53,11 @@ int main(int argc, char **argv)
 			matrixA[a][b] = populatePixel(b,a);
 		}
 	}
-	//print matrixA using prntMatInt(int matrix[YDIM][XDIM])
-	prntMatInt(matrixA);
+	
+	prntMatInt(matrixA); //print matrixA using prntMatInt(int matrix[YDIM][XDIM])
 	
 	double avgMatA;
-	avgMatA = matrixAvgFlt(matrixA);
+	avgMatA = matrixAvgDbl(matrixA);  //finds the average value of matrixA
 	printf("Average of Matrix A is: %0.3f\n\n", avgMatA);
 	
 	double matrixB [N][M];
@@ -69,15 +69,14 @@ int main(int argc, char **argv)
 		}
 	}
 	
-	
 	//print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	prntMatDbl(matrixB);
 	
 	double avgMatB;
-	avgMatB = matrixAvgFltIn(matrixB);
-	printf("Average of Matrix B is: %0.5f\n", avgMatB);
+	avgMatB = matrixAvgDblIn(matrixB);
+	printf("Average of Matrix B is: %0.5f\n", avgMatB); //prints out the average of matrixB
 	
-	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB));
+	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
 	
 	return 0;
 }
@@ -87,18 +86,21 @@ void prntMatInt(int a[YDIM][XDIM])
    int i, j;
    for (i = 0; i < YDIM; i++) {
       for (j = 0; j < XDIM; j++)
-         printf("%6i ", a[i][j]);
+         printf("%6i ", a[i][j]);  
       printf("\n");
    }
    printf("\n");
 }
+
+//these two function differ in how the i,jth value in the matrix "a" is printed
+//the above uses "%6i", because a[i][j] is an int, the below uses "%6.2f", because a[i][j] is a float
 
 void prntMatDbl(double a[YDIM][XDIM])
 {
    int i, j;
    for (i = 0; i < YDIM; i++) {
       for (j = 0; j < XDIM; j++)
-         printf("%6.2f  ", a[i][j]);
+         printf("%6.2f  ", a[i][j]);  //the "%6.2f" formats a[i][j] as a 6 digit float with 2 decimal places
       printf("\n");
    }
    printf("\n");
@@ -110,7 +112,7 @@ double avgMatVal(int value, double avg)
 	return toRet;
 }
 
-double matrixAvgFlt(int matrix[YDIM][XDIM])
+double matrixAvgDbl(int matrix[YDIM][XDIM])
 {
 	double matAvg;
 	matAvg = 0.0;
@@ -126,7 +128,7 @@ double matrixAvgFlt(int matrix[YDIM][XDIM])
 	return matAvg;
 }
 
-double matrixAvgFltIn(double matrix[YDIM][XDIM])
+double matrixAvgDblIn(double matrix[YDIM][XDIM])
 {
 	double matAvg;
 	matAvg = 0.0;
@@ -145,18 +147,18 @@ double matrixAvgFltIn(double matrix[YDIM][XDIM])
 double avgDeviation(double avg)
 {
 	double stdAvg;
-	stdAvg = 63.75;  //
+	stdAvg = 63.75;  //observed as the approximate deviation of the average of the modified matrices (matrixB above)
 	return fabs(stdAvg - avg);
 }
 
-int readImagePixel(int currentX, int currentY)
+int readImagePixel(int currentX, int currentY) //literally just returns a random int from 0..255 inclusive
 {
 	int j;
 	j = rand() % 255;
 	return j;
 }
 
-int populatePixel(int currentX, int currentY)
+int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, currentY) from the image
 {
 	int i;
 	i = readImagePixel(currentX, currentY);
