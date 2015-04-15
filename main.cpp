@@ -36,6 +36,8 @@ double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
 
+//REMEMBER THAT THE Y VALUE IS BEFORE THE X
+
 int main(int argc, char **argv)
 {
 	srand(time(NULL));  //generates a seed for the random values to be based off of
