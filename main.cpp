@@ -27,7 +27,6 @@
 #include <time.h>
 #include "bmp.h"
 
-
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
@@ -39,18 +38,18 @@ int populatePixel(int currentX, int currentY);
 
 int main(int argc, char **argv)
 {
-	srand(time(NULL));
+	srand(time(NULL));  //generates a seed for the random values to be based off of
+	const int N = XDIM;  //reads the width of the image from bmp.h const int XDIM
+	const int M = YDIM;  //reads the height of the image from bmp.h const int YDIM
+	int a,b;  //these ints are used in the various for blocks
 	
-	const int N = XDIM;
-	const int M = YDIM;
-	int a,b;
+	int matrixA [N][M];  //define a NxM matrix, with values of type int
 	
-	int matrixA [N][M];
 	for(a=0;a<N;a++)
 	{
 		for(b=0;b<M;b++)
 		{
-			matrixA[a][b] = populatePixel(b,a);
+			matrixA[a][b] = populatePixel(b,a);  //using the function populatePixel(int currentX, int currentY), the a,bth value of matrixA is assigned
 		}
 	}
 	
@@ -58,24 +57,24 @@ int main(int argc, char **argv)
 	
 	double avgMatA;
 	avgMatA = matrixAvgDbl(matrixA);  //finds the average value of matrixA
-	printf("Average of Matrix A is: %0.3f\n\n", avgMatA);
+	printf("Average of Matrix A is: %0.3f\n\n", avgMatA); //guess what, it prints the average to 3 decimal places
 	
-	double matrixB [N][M];
-	for(a=0;a<N;a++)
+	double matrixB [N][M]; //defines a NxM matrix with values of type double
+	
+	//the following block populates matrixB with the distance between the corresponding matrixA value and the average of matrixA
+	for(a=0;a<N;a++) //pretty sure that this one does the rows
 	{
-		for(b=0;b<M;b++)
+		for(b=0;b<M;b++)  //and this one the columns 
 		{
 			matrixB[a][b] = avgMatVal(matrixA[a][b], avgMatA);
 		}
 	}
 	
-	//print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
-	prntMatDbl(matrixB);
+	prntMatDbl(matrixB);  //print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	
 	double avgMatB;
 	avgMatB = matrixAvgDblIn(matrixB);
 	printf("Average of Matrix B is: %0.5f\n", avgMatB); //prints out the average of matrixB
-	
 	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
 	
 	return 0;
@@ -92,7 +91,7 @@ void prntMatInt(int a[YDIM][XDIM])
    printf("\n");
 }
 
-//these two function differ in how the i,jth value in the matrix "a" is printed
+//these two functions differ in how the i,jth value in the matrix "a" is printed
 //the above uses "%6i", because a[i][j] is an int, the below uses "%6.2f", because a[i][j] is a float
 
 void prntMatDbl(double a[YDIM][XDIM])
@@ -157,6 +156,7 @@ int readImagePixel(int currentX, int currentY) //literally just returns a random
 	j = rand() % 255;
 	return j;
 }
+//the above is currently a placeholder for the future implementation of actually using images
 
 int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, currentY) from the image
 {
