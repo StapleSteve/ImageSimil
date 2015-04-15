@@ -39,8 +39,8 @@ int populatePixel(int currentX, int currentY);
 int main(int argc, char **argv)
 {
 	srand(time(NULL));  //generates a seed for the random values to be based off of
-	const int N = XDIM;  //reads the width of the image from bmp.h const int XDIM
-	const int M = YDIM;  //reads the height of the image from bmp.h const int YDIM
+	const int M = XDIM;  //reads the width of the image from bmp.h const int XDIM
+	const int N = YDIM;  //reads the height of the image from bmp.h const int YDIM
 	int a,b;  //these ints are used in the various for blocks
 	
 	int matrixA [N][M];  //define a NxM matrix, with values of type int
@@ -115,12 +115,12 @@ double matrixAvgDbl(int matrix[YDIM][XDIM])
 {
 	double matAvg;
 	matAvg = 0.0;
-	int m,n;
-	for ( m = 0; m < YDIM; m++ )
+	int a,b;
+	for ( a = 0; a < YDIM; a++ )
 	{
-      for ( n = 0; n < XDIM; n++ )
+      for ( b = 0; b < XDIM; b++ )
       {
-        matAvg = matAvg + matrix[m][n];
+        matAvg = matAvg + matrix[a][b];
       }
 	}
 	matAvg = matAvg / (XDIM * YDIM);
@@ -131,12 +131,12 @@ double matrixAvgDblIn(double matrix[YDIM][XDIM])
 {
 	double matAvg;
 	matAvg = 0.0;
-	int m,n;
-	for ( m = 0; m < YDIM; m++ )
+	int a,b;
+	for ( a = 0; a < YDIM; a++ )
 	{
-      for ( n = 0; n < XDIM; n++ )
+      for ( b = 0; b < XDIM; b++ )
       {
-        matAvg = matAvg + matrix[m][n];
+        matAvg = matAvg + matrix[a][b];
       }
 	}
 	matAvg = matAvg / (XDIM * YDIM);
