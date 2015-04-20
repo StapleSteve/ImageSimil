@@ -25,6 +25,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <fstream>
+#include <string>
 #include "bmp.h"
 
 void prntMatInt(int a[YDIM][XDIM]);
@@ -35,6 +37,8 @@ double matrixAvgDblIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
+bool file_exists(const std::string& s);
+void runNotMain();
 
 //REMEMBER THAT THE Y VALUE IS BEFORE THE X
 
@@ -64,9 +68,9 @@ int main(int argc, char **argv)
 	double matrixB [N][M]; //defines a NxM matrix with values of type double
 	
 	//the following block populates matrixB with the distance between the corresponding matrixA value and the average of matrixA
-	for(a=0;a<N;a++) //pretty sure that this one does the rows
+	for(a=0;a<N;a++)  //columns
 	{
-		for(b=0;b<M;b++)  //and this one the columns 
+		for(b=0;b<M;b++)  //rows
 		{
 			matrixB[a][b] = avgMatVal(matrixA[a][b], avgMatA);
 		}
@@ -78,6 +82,8 @@ int main(int argc, char **argv)
 	avgMatB = matrixAvgDblIn(matrixB);
 	printf("Average of Matrix B is: %0.5f\n", avgMatB); //prints out the average of matrixB
 	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
+	
+	runNotMain();
 	
 	return 0;
 }
@@ -152,17 +158,31 @@ double avgDeviation(double avg)
 	return fabs(stdAvg - avg);
 }
 
-int readImagePixel(int currentX, int currentY) //literally just returns a random int from 0..255 inclusive
+int readImagePixel(int currentX, int currentY) //currently a placeholder for the future implementation of actually using images
 {
 	int j;
-	j = rand() % 255;
+	j = rand() % 255;  //returns a random int from 0..255 inclusive
 	return j;
 }
-//the above is currently a placeholder for the future implementation of actually using images
+
+bool file_exists(const std::string& s) {
+  std::ifstream iff(s.c_str());
+  return iff.is_open();
+}
 
 int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, currentY) from the image
 {
 	int i;
 	i = readImagePixel(currentX, currentY);
 	return i;
+}
+
+void runNotMain()
+{
+	//system("xxd -i -g 3 < lolplz.bmp");
+	//system("xxd -i -g 3 white.bmp > holdTheThings.cpp");
+	if(!file_exists("holdTheThings.cpp"))
+	{
+		system("xxd -i -g 3 white.bmp > holdTheThings.cpp");
+	};
 }

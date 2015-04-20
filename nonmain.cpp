@@ -15,7 +15,7 @@ PBITMAPFILEHEADER file_header;
 PBITMAPINFOHEADER info_header;
 
 void fill() {
-    std::ifstream file("lolplz.bmp");
+    std::ifstream file("Lenna.bmp");
 
     if (file) {
         file.seekg(0,std::ios::end);
@@ -33,9 +33,11 @@ void fill() {
 int notmain() {
     fill();
 
-    cout << buffer[0] << buffer[1] << endl;
+    cout << buffer[0] << buffer[1] << buffer[2] << endl;
     cout << file_header->bfSize << endl;
-    cout << info_header->biWidth << " " << info_header->biHeight << endl;
+    cout << info_header->biWidth << endl;
+    cout << info_header->biHeight << endl;
+    
 
     return 0;
 }
