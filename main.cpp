@@ -29,6 +29,7 @@
 #include <string>
 #include "holdTheThings.h"
 
+void initHold();
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
@@ -38,8 +39,6 @@ double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
 bool file_exists(const std::string& s);
-void runNotMain();
-void initHold();
 
 //REMEMBER THAT THE Y VALUE IS BEFORE THE X
 
@@ -84,11 +83,21 @@ int main(int argc, char **argv)
 	printf("Average of Matrix B is: %0.5f\n", avgMatB); //prints out the average of matrixB
 	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
 	
-	runNotMain();
 	initHold();
 	
 	return 0;
 }
+
+
+void initHold()
+{
+	if(!file_exists("holdTheThings.h"))
+	{
+		system("xxd -i -g 3 white.bmp > holdTheThings.h");
+		printf("Printed to holdTheThings.h");
+	};
+}
+
 
 void prntMatInt(int a[YDIM][XDIM])
 {
@@ -192,25 +201,4 @@ int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, curr
 	int i;
 	i = readImagePixel(currentX, currentY);
 	return i;
-}
-
-void runNotMain()
-{
-	printf("boop %u", white_bmp_len);
-	
-	int l;
-	
-	for(l=122; l<136; l++)
-	{
-		printf("\nbeep %u", white_bmp[l]);
-	};
-}
-
-void initHold()
-{
-	if(!file_exists("holdTheThings.h"))
-	{
-		system("xxd -i -g 3 white.bmp > holdTheThings.h");
-		printf("Printed to holdTheThings.h");
-	};
 }
