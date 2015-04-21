@@ -27,7 +27,7 @@
 #include <time.h>
 #include <fstream>
 #include <string>
-#include "bmp.h"
+#include "holdTheThings.h"
 
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
@@ -181,8 +181,18 @@ void runNotMain()
 {
 	//system("xxd -i -g 3 < lolplz.bmp");
 	//system("xxd -i -g 3 white.bmp > holdTheThings.cpp");
-	if(!file_exists("holdTheThings.cpp"))
+	if(!file_exists("holdTheThings.h"))
 	{
-		system("xxd -i -g 3 white.bmp > holdTheThings.cpp");
+		system("xxd -i -g 3 white.bmp > holdTheThings.h");
+		printf("Printed to holdTheThings.h");
+	};
+	
+	printf("boop %u", white_bmp_len);
+	
+	int l;
+	
+	for(l=122; l<136; l++)
+	{
+		printf("\nbeep %u", white_bmp[l]);
 	};
 }
