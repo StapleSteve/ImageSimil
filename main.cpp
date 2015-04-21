@@ -39,6 +39,7 @@ int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
 bool file_exists(const std::string& s);
 void runNotMain();
+void initHold();
 
 //REMEMBER THAT THE Y VALUE IS BEFORE THE X
 
@@ -84,6 +85,7 @@ int main(int argc, char **argv)
 	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
 	
 	runNotMain();
+	initHold();
 	
 	return 0;
 }
@@ -158,10 +160,25 @@ double avgDeviation(double avg)
 	return fabs(stdAvg - avg);
 }
 
-int readImagePixel(int currentX, int currentY) //currently a placeholder for the future implementation of actually using images
+int readImagePixel(int currentX, int currentY) //literally magic
 {
 	int j;
-	j = rand() % 255;  //returns a random int from 0..255 inclusive
+	if(currentX == 0 && currentY == 0)
+	{
+		j = (white_bmp[133] + white_bmp[134] + white_bmp[135])/3;
+	}
+	else if(currentX == 1 && currentY == 0)
+	{
+		j = (white_bmp[130] + white_bmp[131] + white_bmp[132])/3;
+	}
+	else if (currentX == 1 && currentY == 1)
+	{
+		j = (white_bmp[125] + white_bmp[126] + white_bmp[127])/3;
+	}
+	else if (currentX == 0 && currentY == 1)
+	{
+		j = (white_bmp[122] + white_bmp[123] + white_bmp[124])/3;
+	}
 	return j;
 }
 
@@ -179,14 +196,6 @@ int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, curr
 
 void runNotMain()
 {
-	//system("xxd -i -g 3 < lolplz.bmp");
-	//system("xxd -i -g 3 white.bmp > holdTheThings.cpp");
-	if(!file_exists("holdTheThings.h"))
-	{
-		system("xxd -i -g 3 white.bmp > holdTheThings.h");
-		printf("Printed to holdTheThings.h");
-	};
-	
 	printf("boop %u", white_bmp_len);
 	
 	int l;
@@ -194,5 +203,14 @@ void runNotMain()
 	for(l=122; l<136; l++)
 	{
 		printf("\nbeep %u", white_bmp[l]);
+	};
+}
+
+void initHold()
+{
+	if(!file_exists("holdTheThings.h"))
+	{
+		system("xxd -i -g 3 white.bmp > holdTheThings.h");
+		printf("Printed to holdTheThings.h");
 	};
 }
