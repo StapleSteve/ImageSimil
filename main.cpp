@@ -170,20 +170,10 @@ double avgDeviation(double avg)
 
 int readImagePixel(int currentX, int currentY) //reads the (x,y) pixel from the image by averaging the RGB values, making a grayscale pixel value
 {
-	int j;
+	int i,j;
+	i = 10;
+	j = (white_bmp[LENGTH - (i*currentY + (12-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (11-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (10-currentY)) + 3 * currentX - 3 * currentY])/3;
 	
-	if(currentY == 0)
-	{
-		j = (white_bmp[LENGTH - 12 + 3 * currentX] + white_bmp[LENGTH - 11 + 3 * currentX] + white_bmp[LENGTH - 10 + 3 * currentX])/3;
-	}
-	else if(currentY == 1)
-	{
-		j = (white_bmp[LENGTH - 20 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 19 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 18 - 3 * currentY + 3*currentX])/3;
-	}
-	else if(currentY == 2)
-	{
-		j = (white_bmp[LENGTH - 30 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 29 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 28 - 3 * currentY + 3*currentX])/3;
-	}
 	return j;
 }
 
