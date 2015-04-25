@@ -169,25 +169,19 @@ double avgDeviation(double avg)
 	return fabs(stdAvg - avg);
 }
 
-int readImagePixel(int currentX, int currentY) //literally magic
+int readImagePixel(int currentX, int currentY) //reads the (x,y) pixel from the image by averaging the RGB values, making a grayscale pixel value
 {
 	int j;
-	if(currentX == 0 && currentY == 0)
+	
+	if(currentY == 0)
 	{
-		j = (white_bmp[133] + white_bmp[134] + white_bmp[135])/3;
+		j = (white_bmp[138 - 8 + 3 * currentX] + white_bmp[138 - 7 + 3 * currentX] + white_bmp[138 - 6 + 3 * currentX])/3;
 	}
-	else if(currentX == 1 && currentY == 0)
+	else if(currentY == 1) //we must subtract 2 because of the little break between the first and second pairs of pixels
 	{
-		j = (white_bmp[130] + white_bmp[131] + white_bmp[132])/3;
+		j = (white_bmp[138 - 13 - 3 * currentY + 3*currentX] + white_bmp[138 - 12 - 3 * currentY + 3*currentX] + white_bmp[138 - 11 - 3 * currentY + 3*currentX])/3;
 	}
-	else if (currentX == 1 && currentY == 1)
-	{
-		j = (white_bmp[125] + white_bmp[126] + white_bmp[127])/3;
-	}
-	else if (currentX == 0 && currentY == 1)
-	{
-		j = (white_bmp[122] + white_bmp[123] + white_bmp[124])/3;
-	}
+	
 	return j;
 }
 
