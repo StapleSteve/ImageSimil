@@ -29,7 +29,7 @@
 #include <string>
 #include "holdTheThings.h"
 
-void initHold();
+void initHold();  //shit will break if this is called, as XDIM and YDIM are not defined
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
@@ -44,9 +44,10 @@ bool file_exists(const std::string& s);
 
 int main(int argc, char **argv)
 {
+	initHold();  //makes sure that the file holdTheThings.h exists, and creates it if not
 	srand(time(NULL));  //generates a seed for the random values to be based off of
-	const int M = XDIM;  //reads the width of the image from bmp.h const int XDIM
-	const int N = YDIM;  //reads the height of the image from bmp.h const int YDIM
+	const int M = XDIM;  //reads the width of the image from holdTheThings.h const int XDIM
+	const int N = YDIM;  //reads the height of the image from holdTheThings.h const int YDIM
 	int a,b;  //these ints are used in the various for blocks
 	
 	int matrixA [N][M];  //define a NxM matrix, with values of type int
@@ -82,8 +83,6 @@ int main(int argc, char **argv)
 	avgMatB = matrixAvgDblIn(matrixB);
 	printf("Average of Matrix B is: %0.5f\n", avgMatB); //prints out the average of matrixB
 	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
-	
-	initHold();
 	
 	return 0;
 }
@@ -175,13 +174,16 @@ int readImagePixel(int currentX, int currentY) //reads the (x,y) pixel from the 
 	
 	if(currentY == 0)
 	{
-		j = (white_bmp[138 - 8 + 3 * currentX] + white_bmp[138 - 7 + 3 * currentX] + white_bmp[138 - 6 + 3 * currentX])/3;
+		j = (white_bmp[LENGTH - 12 + 3 * currentX] + white_bmp[LENGTH - 11 + 3 * currentX] + white_bmp[LENGTH - 10 + 3 * currentX])/3;
 	}
-	else if(currentY == 1) //we must subtract 2 because of the little break between the first and second pairs of pixels
+	else if(currentY == 1)
 	{
-		j = (white_bmp[138 - 13 - 3 * currentY + 3*currentX] + white_bmp[138 - 12 - 3 * currentY + 3*currentX] + white_bmp[138 - 11 - 3 * currentY + 3*currentX])/3;
+		j = (white_bmp[LENGTH - 20 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 19 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 18 - 3 * currentY + 3*currentX])/3;
 	}
-	
+	else if(currentY == 2)
+	{
+		j = (white_bmp[LENGTH - 30 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 29 - 3 * currentY + 3*currentX] + white_bmp[LENGTH - 28 - 3 * currentY + 3*currentX])/3;
+	}
 	return j;
 }
 
