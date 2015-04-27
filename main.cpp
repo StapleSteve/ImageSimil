@@ -29,7 +29,6 @@
 #include <string>
 #include "holdTheThings.h"
 
-void initHold();  //shit will break if this is called, as XDIM and YDIM are not defined
 void prntMatInt(int a[YDIM][XDIM]);
 void prntMatDbl(double a[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
@@ -44,8 +43,6 @@ bool file_exists(const std::string& s);
 
 int main(int argc, char **argv)
 {
-	initHold();  //makes sure that the file holdTheThings.h exists, and creates it if not
-	srand(time(NULL));  //generates a seed for the random values to be based off of
 	const int M = XDIM;  //reads the width of the image from holdTheThings.h const int XDIM
 	const int N = YDIM;  //reads the height of the image from holdTheThings.h const int YDIM
 	int a,b;  //these ints are used in the various for blocks
@@ -64,7 +61,7 @@ int main(int argc, char **argv)
 	
 	double avgMatA;
 	avgMatA = matrixAvgDbl(matrixA);  //finds the average value of matrixA
-	printf("Average of Matrix A is: %0.3f\n\n", avgMatA); //guess what, it prints the average to 3 decimal places
+	printf("Average of Matrix A is: %0.3f\n\n", avgMatA); //prints the above average to 3 decimal places
 	
 	double matrixB [N][M]; //defines a NxM matrix with values of type double
 	
@@ -77,7 +74,7 @@ int main(int argc, char **argv)
 		}
 	}
 	
-	prntMatDbl(matrixB);  //print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
+	//prntMatDbl(matrixB);  //print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	
 	double avgMatB;
 	avgMatB = matrixAvgDblIn(matrixB);
@@ -86,17 +83,6 @@ int main(int argc, char **argv)
 	
 	return 0;
 }
-
-
-void initHold()
-{
-	if(!file_exists("holdTheThings.h"))
-	{
-		system("xxd -i -g 3 white.bmp > holdTheThings.h");
-		printf("Printed to holdTheThings.h");
-	};
-}
-
 
 void prntMatInt(int a[YDIM][XDIM])
 {
@@ -173,13 +159,13 @@ int readImagePixel(int currentX, int currentY) //reads the (x,y) pixel from the 
 	int i,j;
 	i = 10;
 	j = (white_bmp[LENGTH - (i*currentY + (12-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (11-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (10-currentY)) + 3 * currentX - 3 * currentY])/3;
-	
+	//honestly cannot remember how I made the above algorithm.  It works for 3x3, 4x4, and 5x5 images for certain
 	return j;
 }
 
 bool file_exists(const std::string& s) {
-  std::ifstream iff(s.c_str());
-  return iff.is_open();
+	std::ifstream iff(s.c_str());
+	return iff.is_open();
 }
 
 int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, currentY) from the image
