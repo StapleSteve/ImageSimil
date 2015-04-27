@@ -89,7 +89,7 @@ void prntMatInt(int a[YDIM][XDIM])
    int i, j;
    for (i = 0; i < YDIM; i++) {
       for (j = 0; j < XDIM; j++)
-         printf("%6i ", a[i][j]);  
+         printf("%4i ", a[i][j]);  
       printf("\n");
    }
    printf("\n");
@@ -160,6 +160,8 @@ int readImagePixel(int currentX, int currentY) //reads the (x,y) pixel from the 
 	i = 10;
 	j = (white_bmp[LENGTH - (i*currentY + (12-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (11-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (10-currentY)) + 3 * currentX - 3 * currentY])/3;
 	//honestly cannot remember how I made the above algorithm.  It works for 3x3, 4x4, and 5x5 images for certain
+	
+	//j = (white_bmp[LENGTH - (i*currentY + (12-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (11-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (10-currentY)) + 3 * currentX - 3 * currentY])/3;
 	return j;
 }
 
