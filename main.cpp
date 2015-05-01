@@ -29,8 +29,8 @@
 #include <string>
 #include "holdTheThings.h"
 
-void prntMatInt(int a[YDIM][XDIM]);
-void prntMatDbl(double a[YDIM][XDIM]);
+void prntMatInt(int matrixI[YDIM][XDIM]);
+void prntMatDbl(double matrixD[YDIM][XDIM]);
 double avgMatVal(int value, double avg);
 double matrixAvgDbl(int matrix[YDIM][XDIM]);
 double matrixAvgDblIn(double matrix[YDIM][XDIM]);
@@ -76,33 +76,33 @@ int main(int argc, char **argv)
 	prntMatDbl(matrixB);  //print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	
 	double avgMatB;
-	avgMatB = matrixAvgDblIn(matrixB);
+	avgMatB = matrixAvgDblIn(matrixB);  //finds the average value of matrixB
 	printf("Average of Matrix B is: %0.5f\n", avgMatB); //prints out the average of matrixB
-	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy
+	printf("The average of Matrix B is %0.5f off of the overall average\n", avgDeviation(avgMatB)); //prints out how far the average of matrixB is from the observed average deviancy, details below
 	
 	return 0;
 }
 
-void prntMatInt(int a[YDIM][XDIM])
+void prntMatInt(int matrixI[YDIM][XDIM])
 {
    int i, j;
    for (i = 0; i < YDIM; i++) {
       for (j = 0; j < XDIM; j++)
-         printf("%4i ", a[i][j]);  
+         printf("%4i ", matrixI[i][j]);  
       printf("\n");
    }
    printf("\n");
 }
 
-//these two functions differ in how the i,jth value in the matrix "a" is printed
-//the above uses "%6i", because a[i][j] is an int, the below uses "%6.2f", because a[i][j] is a float
+//these two functions differ in how the i,jth value in the given matrix is printed
+//the above uses "%4i", because matrixI[i][j] is an int, the below uses "%4.2f", because matrixD[i][j] is a double
 
-void prntMatDbl(double a[YDIM][XDIM])
+void prntMatDbl(double matrixD[YDIM][XDIM])
 {
    int i, j;
    for (i = 0; i < YDIM; i++) {
       for (j = 0; j < XDIM; j++)
-         printf("%6.2f  ", a[i][j]);  //the "%6.2f" formats a[i][j] as a 6 digit float with 2 decimal places
+         printf("%4.2f  ", matrixD[i][j]);  //the "%4.2f" formats matrixD[i][j] as a 4 digit double with 2 decimal places
       printf("\n");
    }
    printf("\n");
