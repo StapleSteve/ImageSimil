@@ -26,8 +26,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include <time.h>
-#include <fstream>
 #include <string>
 #include "holdTheThings.h"
 
@@ -39,7 +37,6 @@ double matrixAvgDblIn(double matrix[YDIM][XDIM]);
 double avgDeviation(double avg);
 int readImagePixel(int currentX, int currentY);
 int populatePixel(int currentX, int currentY);
-bool file_exists(const std::string& s);
 
 //REMEMBER THAT THE Y VALUE IS BEFORE THE X
 
@@ -76,7 +73,7 @@ int main(int argc, char **argv)
 		}
 	}
 	
-	//prntMatDbl(matrixB);  //print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
+	prntMatDbl(matrixB);  //print matrixB using prntMatDbl(double matrix[YDIM][XDIM])
 	
 	double avgMatB;
 	avgMatB = matrixAvgDblIn(matrixB);
@@ -152,7 +149,7 @@ double matrixAvgDblIn(double matrix[YDIM][XDIM])
 double avgDeviation(double avg)
 {
 	double stdAvg;
-	stdAvg = 63.75;  //observed as the approximate deviation of the average of the modified matrices (matrixB above)
+	stdAvg = 63.75;  //observed as the approximate deviation of the average of the modified matrices when MatrixA was filled with random values
 	return fabs(stdAvg - avg);
 }
 
@@ -164,12 +161,9 @@ int readImagePixel(int currentX, int currentY) //reads the (x,y) pixel from the 
 	//honestly cannot remember how I made the above algorithm.  It works for 3x3, 4x4, and 5x5 images for certain
 	
 	//j = (white_bmp[LENGTH - (i*currentY + (12-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (11-currentY)) + 3 * currentX - 3 * currentY] + white_bmp[LENGTH - (i*currentY + (10-currentY)) + 3 * currentX - 3 * currentY])/3;
+	//preserve the above line as the orginal algorithm
+	
 	return j;
-}
-
-bool file_exists(const std::string& s) {
-	std::ifstream iff(s.c_str());
-	return iff.is_open();
 }
 
 int populatePixel(int currentX, int currentY)  //reads the pixel (currentX, currentY) from the image
