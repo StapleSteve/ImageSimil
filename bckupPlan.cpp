@@ -2,22 +2,28 @@
 #include <cstdlib>
 #include <QColor>
 #include <iostream>
- 
+#include <string>
+using namespace std;
+
 int main( int argc , char *argv[ ] ) {
-   if ( argc != 3 ) {
-      std::cout << "Call this with imagecompare <file of image 1>" 
-	 << " <file of image 2>\n" ;
-      return 1 ;
-   }
-   QImage firstImage ( argv[ 1 ] ) ;
-   QImage secondImage ( argv[ 2 ] ) ;
+
+   string file1;
+   cout << "First Image: ";
+   getline (cin, file1);
+   
+   string file2;
+   cout << "\n Second Image: ";
+   getline (cin, file2);
+   
+   QImage firstImage ( file1 ) ;
+   QImage secondImage ( file2 ) ;
    double totaldiff = 0.0 ; //holds the number of different pixels
    int h = firstImage.height( ) ;
    int w = firstImage.width( ) ;
    int hsecond = secondImage.height( ) ;
    int wsecond = secondImage.width( ) ;
    if ( w != wsecond || h != hsecond ) {
-      std::cerr << "Error, pictures must have identical dimensions!\n" ;
+      cerr << "Error, pictures must have identical dimensions!\n" ;
       return 2 ;
    } 
    for ( int y = 0 ; y < h ; y++ ) {
@@ -37,7 +43,7 @@ int main( int argc , char *argv[ ] ) {
 	 totaldiff += std::abs( bFirst -bSecond ) / 255.0 ;
       }
    }
-   std::cout << "The difference of the two pictures is " <<
+   cout << "The difference of the two pictures is " <<
       (totaldiff * 100)  / (w * h * 3)  << " % !\n" ;
    return 0 ;
 }
